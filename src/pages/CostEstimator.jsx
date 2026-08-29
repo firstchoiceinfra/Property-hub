@@ -31,4 +31,4 @@ export default function CostEstimator() {
 
   return (
     <div>
-      <h1 className="font-display text-2xl font-semibold text-b
+  className="mt-1 w-full rounded-lg border border-concrete-300 px-3 py-2 outline-none focus:border-blueprint-400"
