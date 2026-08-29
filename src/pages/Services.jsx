@@ -18,4 +18,5 @@ export default function Services() {
             to={`/services/${s.slug}`}
             className="rounded-xl border border-concrete-200 bg-white p-5 transition-shadow hover:shadow-md"
           >
-            <p className="font-medium text-concrete-900">{s.label}
+      
+<p className="font-medium text-concrete-900">{s.label}</p>
