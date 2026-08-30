@@ -1,15 +1,19 @@
 import { Link } from 'react-router-dom'
 import { useFavorites } from '../context/FavoritesContext.jsx'
+import { useCompare } from '../context/CompareContext.jsx'
 
 export default function PropertyCard({ property }) {
   const { isFavorite, toggleFavorite } = useFavorites()
+  const { isComparing, toggleCompare, compareIds, MAX_COMPARE } = useCompare()
   const favorited = isFavorite(property.id)
+  const comparing = isComparing(property.id)
+  const compareDisabled = !comparing && compareIds.length >= MAX_COMPARE
 
   return (
     <div className="relative overflow-hidden rounded-xl border border-concrete-200 bg-white transition-shadow hover:shadow-md">
       <button
         onClick={(e) => {
-          e.preventDefault() // stop the wrapping Link from navigating
+          e.preventDefault()
           toggleFavorite(property.id)
         }}
         aria-label={favorited ? 'Remove from favorites' : 'Add to favorites'}
@@ -51,6 +55,21 @@ export default function PropertyCard({ property }) {
           </div>
         </div>
       </Link>
+
+      <label
+        className={`flex items-center gap-2 border-t border-concrete-200 px-4 py-2 text-xs ${
+          compareDisabled ? 'text-concrete-300' : 'text-concrete-600'
+        }`}
+      >
+        <input
+          type="checkbox"
+          checked={comparing}
+          disabled={compareDisabled}
+          onChange={() => toggleCompare(property.id)}
+          className="accent-blueprint-600"
+        />
+        Add to Compare
+      </label>
     </div>
   )
 }
