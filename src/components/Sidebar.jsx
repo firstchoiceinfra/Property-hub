@@ -30,12 +30,15 @@ const groups = [
       { to: '/services/insurance', label: 'Home Insurance' },
     ],
   },
+  {
+    title: 'For Vendors',
+    items: [{ to: '/vendor-dashboard', label: 'Vendor Dashboard' }],
+  },
 ]
 
 export default function Sidebar({ open, onClose }) {
   return (
     <>
-      {/* Mobile overlay */}
       {open && (
         <div
           className="fixed inset-0 z-30 bg-black/30 lg:hidden"
