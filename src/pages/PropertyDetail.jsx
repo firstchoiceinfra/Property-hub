@@ -1,8 +1,9 @@
 import { useParams, Link } from 'react-router-dom'
-import { properties } from '../data/mockData.js'
+import { useProperties } from '../context/PropertiesContext.jsx'
 import EmiCalculator from '../components/EmiCalculator.jsx'
 
 export default function PropertyDetail() {
+  const { properties } = useProperties()
   const { id } = useParams()
   const property = properties.find((p) => p.id === id)
 
