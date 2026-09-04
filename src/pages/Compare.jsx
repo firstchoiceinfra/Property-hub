@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { properties } from '../data/mockData.js'
+import { useProperties } from '../context/PropertiesContext.jsx'
 import { useCompare } from '../context/CompareContext.jsx'
 
 const rows = [
@@ -12,6 +12,7 @@ const rows = [
 ]
 
 export default function Compare() {
+  const { properties } = useProperties()
   const { compareIds, toggleCompare, clearCompare } = useCompare()
   const selected = properties.filter((p) => compareIds.includes(p.id))
 
