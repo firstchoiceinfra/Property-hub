@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
-import { properties } from '../data/mockData.js'
+import { useProperties } from '../context/PropertiesContext.jsx'
 import { useFavorites } from '../context/FavoritesContext.jsx'
 import PropertyCard from '../components/PropertyCard.jsx'
 
 export default function Favorites() {
+  const { properties } = useProperties()
   const { favoriteIds } = useFavorites()
   const savedProperties = properties.filter((p) => favoriteIds.includes(p.id))
 
